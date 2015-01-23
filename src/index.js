@@ -35,21 +35,9 @@ function beforeParse(content, cleanContent, dependency) {
 }
 
 function render(dependencies) {
-    return map(reverse(dependencies), renderDependency).join("\n");
+    return map(dependencies, renderDependency).join("\n");
 }
 
 function renderDependency(dependency) {
     return dependency.content;
-}
-
-function reverse(array) {
-    var i = array.length,
-        results = new Array(i),
-        j = 0;
-
-    while (i--) {
-        results[j++] = array[i];
-    }
-
-    return results;
 }
