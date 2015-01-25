@@ -1,16 +1,3 @@
-.block {
-  *zoom: 1;
-  position: relative;
-  display: block;
-}
-.block:before,
-.block:after {
-  content: "";
-  display: table;
-}
-.block:after {
-  clear: both;
-}
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -192,6 +179,19 @@ table {
 td,
 th {
   padding: 0;
+}
+.block {
+  *zoom: 1;
+  position: relative;
+  display: block;
+}
+.block:before,
+.block:after {
+  content: "";
+  display: table;
+}
+.block:after {
+  clear: both;
 }
 .block .grid-12 {
   position: relative;

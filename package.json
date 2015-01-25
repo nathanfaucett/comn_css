@@ -24,8 +24,6 @@
   "dependencies": {
     "resolve": "nathanfaucett/resolve",
     "parse_dependency_tree": "nathanfaucett/parse_dependency_tree",
-    "map": "nathanfaucett/map",
-    "file_path": "nathanfaucett/file_path",
-    "for_each": "nathanfaucett/for_each"
+    "file_path": "nathanfaucett/file_path"
   }
 }
