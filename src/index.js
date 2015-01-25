@@ -10,7 +10,8 @@ function comnCSS(index, options) {
     var graph;
 
     options = options || {};
-    options.exts = ["less", "css"];
+
+    options.exts = options.exts || ["less", "css"];
     options.packageType = "style";
     options.includeNames = "\\@import\\s*(?:\\(.*?\\))?\\s*";
     options.useBraces = false;
