@@ -17,6 +17,7 @@ function comnCSS(index, options) {
     options.useBraces = false;
     options.encoding = options.encoding || "utf-8";
     options.beforeParse = beforeParse;
+    options.parseAsync = false;
 
     graph = parseDependencyTree(index, options);
 
@@ -30,7 +31,7 @@ function replaceImports(dependency, graph) {
 
     dependency.used = true;
 
-    return dependency.content.replace(graph.reInclude, function(match, fnType, dependencyPath) {
+    return dependency.content.replace(graph.reInclude, function(match, includeName, functionName, dependencyPath) {
         var opts = resolve(dependencyPath, parentDir, options),
             id = opts && (opts.moduleName ? opts.moduleName : opts.fullPath) || false,
             dep = id ? hash[id] : null;
