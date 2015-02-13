@@ -7,7 +7,7 @@ module.exports = comnCSS;
 
 
 function comnCSS(index, options) {
-    var graph;
+    var tree;
 
     options = options || {};
 
@@ -15,29 +15,26 @@ function comnCSS(index, options) {
     options.packageType = "style";
     options.includeNames = "\\@import\\s*(?:\\(.*?\\))?\\s*";
     options.useBraces = false;
-    options.encoding = options.encoding || "utf-8";
     options.beforeParse = beforeParse;
-    options.parseAsync = false;
 
-    graph = parseDependencyTree(index, options);
-
-    return replaceImports(graph.array[0], graph);
+    tree = parseDependencyTree(index, options);
+    return replaceImports(tree.root, tree);
 }
 
-function replaceImports(dependency, graph) {
-    var options = graph.options,
-        hash = graph.hash,
+function replaceImports(dependency, tree) {
+    var options = tree.options,
+        childHash = tree.childHash,
         parentDir = filePath.dir(dependency.fullPath);
 
     dependency.used = true;
 
-    return dependency.content.replace(graph.reInclude, function(match, includeName, functionName, dependencyPath) {
+    return dependency.content.replace(options.reInclude, function(match, includeName, functionName, dependencyPath) {
         var opts = resolve(dependencyPath, parentDir, options),
-            id = opts && (opts.moduleName ? opts.moduleName : opts.fullPath) || false,
-            dep = id ? hash[id] : null;
+            id = opts ? (opts.moduleName ? opts.moduleName : opts.fullPath) : false,
+            dep = id ? childHash[id] : null;
 
         if (dep && !dep.used) {
-            return replaceImports(dep, graph);
+            return replaceImports(dep, tree);
         }
 
         return "";
