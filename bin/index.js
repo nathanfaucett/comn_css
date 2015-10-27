@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var comnCSS = require("../src/index"),
+var comnCSS = require(".."),
     fileUtils = require("file_utils"),
     less = require("less"),
     argv = require("argv");
@@ -20,17 +20,20 @@ if (!options.out) {
 }
 
 
-var str = comnCSS(options.file);
-
-
-if (!!options.less) {
-    less.render(str, function(err, out) {
-        if (err) {
-            throw err;
+comnCSS(options.file, function onComnCSS(error, out) {
+    if (error) {
+        throw error;
+    } else {
+        if (!!options.less) {
+            less.render(out, function(error, lessOut) {
+                if (error) {
+                    throw error;
+                } else {
+                    fileUtils.writeFileSync(options.out, lessOut.css);
+                }
+            });
+        } else {
+            fileUtils.writeFileSync(options.out, out);
         }
-
-        fileUtils.writeFileSync(options.out, out.css);
-    });
-} else {
-    fileUtils.writeFileSync(options.out, str);
-}
+    }
+});

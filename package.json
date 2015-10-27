@@ -9,26 +9,34 @@
   "bin": {
     "comn_css": "bin/index.js"
   },
+  "scripts": {
+    "test": "npm run test-node",
+    "test-node": "node ./test | ./node_modules/.bin/tap-spec",
+    "test-node-raw": "node ./test"
+  },
   "main": "src/index.js",
   "keywords": [
     "comn_css",
     "comn_css.js"
   ],
   "author": "Nathan Faucett",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jsbeautifier": "^0.2.7",
-    "mocha": "^2.1.0"
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-jsbeautifier": "^0.2.10",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0"
   },
   "dependencies": {
-    "less": "^2.2.0",
-    "argv": "nathanfaucett/argv",
-    "file_utils": "nathanfaucett/file_utils",
-    "resolve": "nathanfaucett/resolve",
-    "parse_dependency_tree": "nathanfaucett/parse_dependency_tree",
-    "file_path": "nathanfaucett/file_path"
+    "argv": "git://github.com/nathanfaucett/argv.git",
+    "dependency_tree": "git://github.com/nathanfaucett/dependency_tree.git",
+    "extend": "git://github.com/nathanfaucett/extend.git",
+    "file_path": "git://github.com/nathanfaucett/file_path.git",
+    "file_utils": "git://github.com/nathanfaucett/file_utils.git",
+    "is_function": "git://github.com/nathanfaucett/is_function.git",
+    "less": "^2.5.3",
+    "resolve": "git://github.com/nathanfaucett/resolve.git"
   }
 }

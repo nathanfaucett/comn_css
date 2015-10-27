@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             options: {
                 es3: true,
                 unused: true,
-                curly: false,
+                curly: true,
                 eqeqeq: true,
                 expr: true,
                 eqnull: true,
@@ -21,9 +21,7 @@ module.exports = function(grunt) {
             files: [
                 "Gruntfile.js",
                 "src/**/*.js",
-                "test/**/*.js",
-                "!test/**/*.min.js",
-                "!test/**/*.browserify.js"
+                "test/**/*.js"
             ]
         }
     });
