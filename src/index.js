@@ -1,7 +1,9 @@
 var resolve = require("resolve"),
     extend = require("extend"),
     isFunction = require("is_function"),
-    DependencyTree = require("dependency_tree");
+    DependencyTree = require("dependency_tree"),
+    isNodeModule = require("resolve/src/utils/isNodeModule"),
+    getDependencyId = require("dependency_tree/src/utils/getDependencyId");
 
 
 module.exports = comnCSS;
@@ -68,10 +70,10 @@ function baseReplaceImports(dependency, tree, options) {
 
     return dependency.content.replace(options.reInclude, function onReplace(match, includeName, functionName, dependencyPath) {
         var resolved = resolve(dependencyPath, dependency.fullPath, options),
-            id = resolved ? resolved.fullPath : false,
+            id = resolved ? getDependencyId(resolved, isNodeModule(dependencyPath)) : false,
             dep = id ? dependencyHash[id] : null;
 
-        if (dep.used > options.maxUseTimes) {
+        if (dep && dep.used > options.maxUseTimes) {
             throw new Error(
                 "comn css " + dep.fullPath + " reach limit of use times (" + options.maxUseTimes + ") this could be\n" +
                 "    due to recursive dependencies, or if your using the file that many times set the maxUseTimes in the\n" +
