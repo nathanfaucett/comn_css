@@ -1,9 +1,0 @@
-{
-  "name": "test",
-  "version": "0.0.1",
-  "style": "index.less",
-  "dependencies": {
-    "create-grid.less": "git://github.com/nathanfaucett/create-grid.less.git",
-    "normalize.less": "git://github.com/nathanfaucett/normalize.less.git"
-  }
-}
