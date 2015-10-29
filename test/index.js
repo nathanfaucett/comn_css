@@ -7,13 +7,13 @@ var tape = require("tape"),
 tape("comnCSS(index : FilePath String, options : Object) ", function(assert) {
     var out = comnCSS(__dirname + "/lib/index.less");
 
-    fs.writeFileSync(__dirname + "/lib/index.min.less", out);
+    fs.writeFileSync(__dirname + "/build/index.min.less", out);
 
     less.render(out, function(error, lessOut) {
         if (error) {
             assert.end(error);
         } else {
-            fs.writeFileSync(__dirname + "/lib/index.min.css", lessOut.css);
+            fs.writeFileSync(__dirname + "/build/index.min.css", lessOut.css);
             assert.end();
         }
     });
