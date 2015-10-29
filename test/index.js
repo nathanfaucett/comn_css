@@ -4,21 +4,17 @@ var tape = require("tape"),
     comnCSS = require("..");
 
 
-tape("comnCSS(index : FilePath String, options : Object[, callback: Function]) ", function(assert) {
-    comnCSS(__dirname + "/lib/index.less", function(error, out) {
+tape("comnCSS(index : FilePath String, options : Object) ", function(assert) {
+    var out = comnCSS(__dirname + "/lib/index.less");
+
+    fs.writeFileSync(__dirname + "/lib/index.min.less", out);
+
+    less.render(out, function(error, lessOut) {
         if (error) {
             assert.end(error);
         } else {
-            fs.writeFileSync(__dirname + "/lib/index.min.less", out);
-
-            less.render(out, function(error, lessOut) {
-                if (error) {
-                    assert.end(error);
-                } else {
-                    fs.writeFileSync(__dirname + "/lib/index.min.css", lessOut.css);
-                    assert.end();
-                }
-            });
+            fs.writeFileSync(__dirname + "/lib/index.min.css", lessOut.css);
+            assert.end();
         }
     });
 });

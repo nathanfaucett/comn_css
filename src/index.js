@@ -1,21 +1,14 @@
 var resolve = require("resolve"),
     extend = require("extend"),
-    isFunction = require("is_function"),
     DependencyTree = require("dependency_tree"),
-    isNodeModule = require("resolve/src/utils/isNodeModule"),
     getDependencyId = require("dependency_tree/src/utils/getDependencyId");
 
 
 module.exports = comnCSS;
 
 
-function comnCSS(index, options, callback) {
+function comnCSS(index, options) {
     var tree;
-
-    if (isFunction(options)) {
-        callback = options;
-        options = {};
-    }
 
     options = options || {};
 
@@ -29,24 +22,16 @@ function comnCSS(index, options, callback) {
     tree = new DependencyTree(index, options);
     extend(options, tree.options);
 
-    tree.parse(function onParse(error) {
-        var chunk;
+    tree.parse();
 
-        if (error) {
-            callback(error);
-        } else {
-            chunk = tree.chunks[0];
+    chunk = tree.chunks[0];
 
-            if (chunk && chunk.dependencies[0]) {
-                replaceImports(chunk.dependencies[0], tree, options, callback);
-            } else {
-                callback(new Error("No start file found " + index));
-            }
-        }
-    });
+    if (chunk && chunk.dependencies[0]) {
+        return replaceImports(chunk.dependencies[0], tree, options);
+    }
 }
 
-function replaceImports(dependency, tree, options, callback) {
+function replaceImports(dependency, tree, options) {
     var out = "",
         error;
 
@@ -56,11 +41,7 @@ function replaceImports(dependency, tree, options, callback) {
         error = e;
     }
 
-    if (error) {
-        callback(error);
-    } else {
-        callback(undefined, out);
-    }
+    return out;
 }
 
 function baseReplaceImports(dependency, tree, options) {
@@ -70,7 +51,8 @@ function baseReplaceImports(dependency, tree, options) {
 
     return dependency.content.replace(options.reInclude, function onReplace(match, includeName, functionName, dependencyPath) {
         var resolved = resolve(dependencyPath, dependency.fullPath, options),
-            id = resolved ? getDependencyId(resolved, isNodeModule(dependencyPath)) : false,
+            resolvedModule = resolved.pkg ? resolved : dependency.module,
+            id = resolved ? getDependencyId(resolved, resolvedModule) : false,
             dep = id ? dependencyHash[id] : null;
 
         if (dep && dep.used > options.maxUseTimes) {

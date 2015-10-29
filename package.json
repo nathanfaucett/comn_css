@@ -35,9 +35,7 @@
     "argv": "git://github.com/nathanfaucett/argv.git",
     "dependency_tree": "git://github.com/nathanfaucett/dependency_tree.git",
     "extend": "git://github.com/nathanfaucett/extend.git",
-    "file_path": "git://github.com/nathanfaucett/file_path.git",
     "file_utils": "git://github.com/nathanfaucett/file_utils.git",
-    "is_function": "git://github.com/nathanfaucett/is_function.git",
     "less": "^2.5.3",
     "resolve": "git://github.com/nathanfaucett/resolve.git"
   }
