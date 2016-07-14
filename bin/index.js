@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 var comnCSS = require(".."),
-    fileUtils = require("file_utils"),
-    less = require("less"),
-    argv = require("argv");
+    fileUtils = require("@nathanfaucett/file_utils"),
+    less = require("@nathanfaucett/less"),
+    argv = require("@nathanfaucett/argv");
 
 
 var options = argv({

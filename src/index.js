@@ -1,7 +1,7 @@
-var resolve = require("resolve"),
-    extend = require("extend"),
-    DependencyTree = require("dependency_tree"),
-    getDependencyId = require("dependency_tree/src/utils/getDependencyId");
+var resolve = require("@nathanfaucett/resolve"),
+    extend = require("@nathanfaucett/extend"),
+    DependencyTree = require("@nathanfaucett/dependency_tree"),
+    getDependencyId = require("@nathanfaucett/dependency_tree/src/utils/getDependencyId");
 
 
 module.exports = comnCSS;
@@ -53,7 +53,7 @@ function baseReplaceImports(dependency, tree, options) {
         var resolved = resolve(dependencyPath, dependency.fullPath, options),
             resolvedModule = resolved.pkg ? resolved : dependency.module,
             id = resolved ? getDependencyId(resolved, resolvedModule) : false,
-            dep = id ? dependencyHash[id] : null;
+            dep = id ? dependencyHash[id] : false;
 
         if (dep && dep.used > options.maxUseTimes) {
             throw new Error(

@@ -1,5 +1,5 @@
 {
-  "name": "comn_css",
+  "name": "@nathanfaucett/comn_css",
   "version": "0.0.1",
   "description": "module compiler for less/css",
   "repository": {
@@ -23,20 +23,20 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.3",
-    "grunt-jsbeautifier": "^0.2.10",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-jsbeautifier": "^0.2.13",
     "tap-spec": "^4.1.0",
     "tape": "^4.2.0",
-    "create-grid.less": "git://github.com/nathanfaucett/create-grid.less.git",
-    "normalize.less": "git://github.com/nathanfaucett/normalize.less.git"
+    "@nathanfaucett/create-grid.less": "^0.0.2",
+    "@nathanfaucett/normalize.less": "^0.0.1"
   },
   "dependencies": {
-    "argv": "git://github.com/nathanfaucett/argv.git",
-    "dependency_tree": "git://github.com/nathanfaucett/dependency_tree.git",
-    "extend": "git://github.com/nathanfaucett/extend.git",
-    "file_utils": "git://github.com/nathanfaucett/file_utils.git",
+    "@nathanfaucett/argv": "^0.0.1",
+    "@nathanfaucett/dependency_tree": "^0.0.1",
+    "@nathanfaucett/extend": "^0.0.1",
+    "@nathanfaucett/file_utils": "^0.0.1",
     "less": "^2.5.3",
-    "resolve": "git://github.com/nathanfaucett/resolve.git"
+    "@nathanfaucett/resolve": "^0.0.1"
   }
 }
