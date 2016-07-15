@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/comn_css",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "module compiler for less/css",
   "repository": {
     "type": "git",
