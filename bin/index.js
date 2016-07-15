@@ -2,7 +2,7 @@
 
 var comnCSS = require(".."),
     fileUtils = require("@nathanfaucett/file_utils"),
-    less = require("@nathanfaucett/less"),
+    less = require("less"),
     argv = require("@nathanfaucett/argv");
 
 
