@@ -28,6 +28,8 @@ function comnCSS(index, options) {
 
     if (chunk && chunk.dependencies[0]) {
         return replaceImports(chunk.dependencies[0], tree, options);
+    } else {
+        throw new Error("Something weird happened with dependency tree parser");
     }
 }
 
