@@ -1,6 +1,6 @@
 {
   "name": "@nathanfaucett/comn_css",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "module compiler for less/css",
   "repository": {
     "type": "git",
@@ -33,10 +33,10 @@
   },
   "dependencies": {
     "@nathanfaucett/argv": "^0.0.1",
-    "@nathanfaucett/dependency_tree": "^0.0.4",
-    "@nathanfaucett/extend": "^0.0.1",
-    "@nathanfaucett/file_utils": "^0.0.1",
+    "@nathanfaucett/dependency_tree": "^0.0.5",
+    "@nathanfaucett/extend": "^0.0.2",
+    "@nathanfaucett/file_utils": "^0.0.5",
     "less": "^2.5.3",
-    "@nathanfaucett/resolve": "^0.0.3"
+    "@nathanfaucett/resolve": "^0.0.4"
   }
 }
